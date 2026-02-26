@@ -90,14 +90,19 @@
             text-decoration: none;
         }
 
-        .logo img {
-            height: 100px;
-            width: auto;
-            flex-shrink: 0;
+        .logo-icon {
+            font-size: 1.5rem;
         }
 
-        .footer .logo img {
-            height: 180px;
+        .logo-text {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--white);
+        }
+
+        .footer .logo-text {
+            font-size: 1.5rem;
         }
 
         .nav-links {
@@ -907,7 +912,8 @@
         <div class="container">
             <nav class="nav">
                 <a href="#" class="logo">
-                    <img src="logo.png" alt="HardHat Digital">
+                    <span class="logo-icon">🔨</span>
+                    <span class="logo-text">Hard<span style="color:var(--amber)">Hat</span></span>
                 </a>
                 <ul class="nav-links">
                     <li><a href="#services">Services</a></li>
@@ -936,7 +942,7 @@
         <div class="container">
             <div class="hero-grid">
                 <div>
-                    <div class="hero-logo reveal"><img src="logo.png" alt="HardHat Digital"></div>
+                    <div class="hero-logo reveal"><span style="font-family:var(--font-display);font-size:4rem;font-weight:800;color:var(--white)">🔨 Hard<span style="color:var(--amber)">Hat</span> <span style="font-weight:600;color:var(--slate-400);font-size:2.5rem">Digital</span></span></div>
                     <div class="hero-tag reveal reveal-delay-1">⚡ Websites that work as hard as you do</div>
                     <h1 class="reveal reveal-delay-2">
                         Digital presence<br>for the <span class="accent">skilled trades.</span>
@@ -1173,7 +1179,7 @@
                         <div class="contact-detail-icon">📞</div>
                         <div>
                             <div class="contact-detail-label">Phone</div>
-                            <div class="contact-detail-value">(555) 123-4567</div>
+                            <div class="contact-detail-value"><a href="tel:9177677262" style="color:inherit;text-decoration:none">(917) 767-7262</a></div>
                         </div>
                     </div>
 
@@ -1181,15 +1187,7 @@
                         <div class="contact-detail-icon">✉️</div>
                         <div>
                             <div class="contact-detail-label">Email</div>
-                            <div class="contact-detail-value">hello@hardhat.digital</div>
-                        </div>
-                    </div>
-
-                    <div class="contact-detail">
-                        <div class="contact-detail-icon">📍</div>
-                        <div>
-                            <div class="contact-detail-label">Based In</div>
-                            <div class="contact-detail-value">New Jersey</div>
+                            <div class="contact-detail-value"><a href="mailto:Hardhatdigital@zohomail.com" style="color:inherit;text-decoration:none">Hardhatdigital@zohomail.com</a></div>
                         </div>
                     </div>
 
@@ -1202,7 +1200,7 @@
                     </div>
                 </div>
 
-                <form class="contact-form reveal reveal-delay-1" onsubmit="event.preventDefault(); this.innerHTML='<div style=\'text-align:center;padding:4rem 2rem\'><h3 style=\'color:var(--white);margin-bottom:0.5rem\'>Message sent.</h3><p style=\'color:var(--slate-400)\'>We\'ll get back to you within 2 hours.</p></div>'">
+                <form class="contact-form reveal reveal-delay-1" id="contactForm">
                     <div class="form-row">
                         <div class="form-field">
                             <label for="name">Name</label>
@@ -1247,7 +1245,8 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <a href="#" class="logo">
-                        <img src="logo.png" alt="HardHat Digital">
+                        <span class="logo-icon">🔨</span>
+                        <span class="logo-text">Hard<span style="color:var(--amber)">Hat</span></span>
                     </a>
                     <p>Premium websites for the skilled trades. Built by people who understand your business.</p>
                 </div>
@@ -1307,6 +1306,34 @@
                 e.preventDefault();
                 const t = document.querySelector(a.getAttribute('href'));
                 if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // Contact form - sends to email via Formsubmit
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const form = this;
+            const data = new FormData(form);
+            
+            fetch('https://formsubmit.co/ajax/Hardhatdigital@zohomail.com', {
+                method: 'POST',
+                body: data
+            })
+            .then(r => r.json())
+            .then(d => {
+                form.innerHTML = '<div style="text-align:center;padding:4rem 2rem"><h3 style="color:var(--white);margin-bottom:0.5rem">Message sent! 🎉</h3><p style="color:var(--slate-400)">We\'ll get back to you within 2 hours.</p></div>';
+            })
+            .catch(() => {
+                // Fallback: open mailto
+                const name = data.get('name');
+                const email = data.get('email');
+                const phone = data.get('phone');
+                const trade = data.get('trade');
+                const msg = data.get('message');
+                const subject = `New Lead from ${name} (${trade})`;
+                const body = `Name: ${name}%0AEmail: ${email}%0APhone: ${phone}%0ATrade: ${trade}%0A%0A${msg}`;
+                window.location.href = `mailto:Hardhatdigital@zohomail.com?subject=${subject}&body=${body}`;
+                form.innerHTML = '<div style="text-align:center;padding:4rem 2rem"><h3 style="color:var(--white);margin-bottom:0.5rem">Message sent! 🎉</h3><p style="color:var(--slate-400)">We\'ll get back to you within 2 hours.</p></div>';
             });
         });
 
