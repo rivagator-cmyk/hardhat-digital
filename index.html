@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="HardHat Digital — Premium websites for plumbers, electricians, HVAC contractors, and skilled trades. Fast turnaround, honest pricing, real results.">
+    <title>HardHat Digital | Premium Websites for the Trades</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --slate-950: #0a0f1a;
+            --slate-900: #0f172a;
+            --slate-800: #1e293b;
+            --slate-700: #334155;
+            --slate-600: #475569;
+            --slate-400: #94a3b8;
+            --slate-300: #cbd5e1;
+            --slate-100: #f1f5f9;
+            --amber: #d97706;
+            --amber-light: #f59e0b;
+            --amber-glow: rgba(217, 119, 6, 0.15);
+            --white: #ffffff;
+            --font-display: 'Plus Jakarta Sans', sans-serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .reveal { opacity: 1 !important; transform: none !important; }
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--slate-950);
+            color: var(--slate-300);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* ── Grain overlay ── */
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* ── Typography ── */
+        h1, h2, h3, h4 { font-family: var(--font-display); color: var(--white); line-height: 1.1; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+        /* ── Header ── */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            background: transparent;
+        }
+
+        .header.scrolled {
+            background: rgba(10, 15, 26, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(217, 119, 6, 0.1);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0;
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 100px;
+            width: auto;
+            flex-shrink: 0;
+        }
+
+        .footer .logo img {
+            height: 180px;
+        }
+
+        .nav-links {
+            display: none;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--slate-400);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.025em;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover { color: var(--white); }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.75rem;
+            font-family: var(--font-body);
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--amber);
+            color: var(--slate-950);
+        }
+
+        .btn-primary:hover {
+            background: var(--amber-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(217, 119, 6, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--slate-300);
+            border: 1px solid var(--slate-700);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--amber);
+            color: var(--amber);
+        }
+
+        .btn-lg { padding: 1rem 2.25rem; font-size: 1rem; }
+
+        /* ── Mobile menu ── */
+        .menu-toggle {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .menu-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--slate-300);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(10, 15, 26, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .mobile-nav.open { display: flex; }
+
+        .mobile-nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            font-weight: 700;
+        }
+
+        .mobile-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 2rem;
+            background: none;
+            border: none;
+            color: var(--slate-400);
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        /* ── Hero ── */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 8rem 0 6rem;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, var(--amber-glow) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-logo {
+            margin-bottom: 2rem;
+        }
+
+        .hero-logo img {
+            height: 350px;
+            width: auto;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--amber-glow);
+            border: 1px solid rgba(217, 119, 6, 0.2);
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--amber-light);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            font-weight: 800;
+            letter-spacing: -2px;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 .accent { color: var(--amber); }
+
+        .hero-sub {
+            font-size: clamp(1.1rem, 2vw, 1.35rem);
+            color: var(--slate-400);
+            max-width: 540px;
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+        }
+
+        .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 5rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--slate-800);
+        }
+
+        .hero-stat-value {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--white);
+        }
+
+        .hero-stat-value span { color: var(--amber); }
+
+        .hero-stat-label {
+            font-size: 0.85rem;
+            color: var(--slate-400);
+            margin-top: 0.25rem;
+        }
+
+        /* ── Section base ── */
+        .section { padding: 7rem 0; }
+
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--amber);
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3.25rem);
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 1rem;
+        }
+
+        .section-desc {
+            font-size: 1.1rem;
+            color: var(--slate-400);
+            max-width: 560px;
+        }
+
+        .section-header {
+            margin-bottom: 4rem;
+        }
+
+        .section-header.center { text-align: center; }
+        .section-header.center .section-desc { margin: 0 auto; }
+
+        .section-alt { background: var(--slate-900); }
+
+        /* ── Services ── */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .service-card {
+            padding: 2.5rem;
+            background: var(--slate-900);
+            border: 1px solid var(--slate-800);
+            border-radius: 12px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-alt .service-card { background: var(--slate-800); border-color: var(--slate-700); }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--amber), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(217, 119, 6, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .service-card:hover::before { opacity: 1; }
+
+        .service-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--amber-glow);
+            border-radius: 10px;
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.25px;
+        }
+
+        .service-card p { color: var(--slate-400); font-size: 0.95rem; }
+
+        /* ── Portfolio ── */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .portfolio-card {
+            border-radius: 12px;
+            overflow: hidden;
+            background: var(--slate-800);
+            border: 1px solid var(--slate-700);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .portfolio-preview {
+            height: 220px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-preview-inner {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .portfolio-card:nth-child(1) .portfolio-preview { background: linear-gradient(135deg, #1a365d, #2d3748); }
+        .portfolio-card:nth-child(2) .portfolio-preview { background: linear-gradient(135deg, #742a2a, #2d3748); }
+        .portfolio-card:nth-child(3) .portfolio-preview { background: linear-gradient(135deg, #22543d, #2d3748); }
+        .portfolio-card:nth-child(4) .portfolio-preview { background: linear-gradient(135deg, #553c14, #2d3748); }
+
+        .portfolio-mockup {
+            width: 80%;
+            height: 75%;
+            background: rgba(255,255,255,0.07);
+            border-radius: 8px 8px 0 0;
+            border: 1px solid rgba(255,255,255,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-mockup-bar {
+            height: 24px;
+            background: rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            gap: 5px;
+        }
+
+        .portfolio-mockup-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.15);
+        }
+
+        .portfolio-mockup-body {
+            padding: 12px;
+        }
+
+        .portfolio-mockup-line {
+            height: 6px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 3px;
+            margin-bottom: 6px;
+        }
+
+        .portfolio-mockup-line:nth-child(1) { width: 60%; }
+        .portfolio-mockup-line:nth-child(2) { width: 80%; }
+        .portfolio-mockup-line:nth-child(3) { width: 45%; }
+
+        .portfolio-body { padding: 1.75rem; }
+
+        .portfolio-trade {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--amber);
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-body h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+
+        .portfolio-body p { font-size: 0.9rem; color: var(--slate-400); }
+
+        /* ── Pricing ── */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            align-items: start;
+        }
+
+        .pricing-card {
+            padding: 3rem 2.5rem;
+            background: var(--slate-900);
+            border: 1px solid var(--slate-800);
+            border-radius: 12px;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--amber);
+            background: linear-gradient(180deg, rgba(217, 119, 6, 0.06) 0%, var(--slate-900) 100%);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--amber);
+            color: var(--slate-950);
+            padding: 0.35rem 1.25rem;
+            border-radius: 100px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .pricing-name {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--slate-400);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .pricing-amount {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--white);
+            line-height: 1;
+        }
+
+        .pricing-amount span {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--slate-400);
+            font-family: var(--font-body);
+        }
+
+        .pricing-setup {
+            font-size: 0.85rem;
+            color: var(--slate-400);
+            margin-top: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-desc {
+            font-size: 0.95rem;
+            color: var(--slate-400);
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--slate-800);
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 2.5rem;
+        }
+
+        .pricing-features li {
+            padding: 0.6rem 0;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--slate-300);
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            color: var(--amber);
+            font-weight: 700;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+
+        .pricing-card .btn { width: 100%; justify-content: center; }
+
+        /* ── Process ── */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+        }
+
+        .process-step { position: relative; }
+
+        .process-num {
+            font-family: var(--font-display);
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--slate-800);
+            line-height: 1;
+            margin-bottom: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .process-step:hover .process-num { color: var(--amber); }
+
+        .process-step h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .process-step p { font-size: 0.9rem; color: var(--slate-400); }
+
+        /* ── Testimonials ── */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .testimonial-card {
+            padding: 2.5rem;
+            background: var(--slate-800);
+            border: 1px solid var(--slate-700);
+            border-radius: 12px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(217, 119, 6, 0.2);
+        }
+
+        .testimonial-stars {
+            color: var(--amber);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            margin-bottom: 1.25rem;
+        }
+
+        .testimonial-text {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--slate-300);
+            margin-bottom: 1.75rem;
+        }
+
+        .testimonial-author { display: flex; align-items: center; gap: 1rem; }
+
+        .testimonial-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--slate-700);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--amber);
+        }
+
+        .testimonial-name {
+            font-weight: 600;
+            color: var(--white);
+            font-size: 0.95rem;
+        }
+
+        .testimonial-company {
+            font-size: 0.8rem;
+            color: var(--slate-400);
+        }
+
+        /* ── CTA Banner ── */
+        .cta-banner {
+            padding: 6rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-banner::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, var(--amber-glow) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .cta-banner h2 {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 1rem;
+        }
+
+        .cta-banner p {
+            font-size: 1.15rem;
+            color: var(--slate-400);
+            max-width: 500px;
+            margin: 0 auto 2.5rem;
+        }
+
+        /* ── Contact ── */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-detail {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .contact-detail-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--amber-glow);
+            border-radius: 8px;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .contact-detail-label {
+            font-size: 0.8rem;
+            color: var(--slate-400);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+        }
+
+        .contact-detail-value {
+            color: var(--white);
+            font-weight: 500;
+            margin-top: 0.15rem;
+        }
+
+        .contact-form { display: grid; gap: 1.25rem; }
+
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+
+        .form-field label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--slate-400);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-field input,
+        .form-field textarea,
+        .form-field select {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            background: var(--slate-800);
+            border: 1px solid var(--slate-700);
+            border-radius: 8px;
+            color: var(--white);
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-field input:focus,
+        .form-field textarea:focus,
+        .form-field select:focus {
+            outline: none;
+            border-color: var(--amber);
+        }
+
+        .form-field textarea { resize: vertical; min-height: 120px; }
+
+        .form-field select option { background: var(--slate-800); }
+
+        /* ── Footer ── */
+        .footer {
+            padding: 4rem 0 2rem;
+            border-top: 1px solid var(--slate-800);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand p {
+            font-size: 0.9rem;
+            color: var(--slate-400);
+            margin-top: 1rem;
+            max-width: 280px;
+        }
+
+        .footer h4 {
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--slate-400);
+            margin-bottom: 1.25rem;
+        }
+
+        .footer-links { list-style: none; }
+
+        .footer-links li { margin-bottom: 0.6rem; }
+
+        .footer-links a {
+            color: var(--slate-400);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover { color: var(--white); }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid var(--slate-800);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--slate-600);
+            font-size: 0.8rem;
+        }
+
+        /* ── Animations ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+
+        /* ── Responsive ── */
+        @media (min-width: 769px) {
+            .nav-links { display: flex; }
+            .menu-toggle { display: none; }
+            .hero-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .hero { min-height: auto; padding: 7rem 0 4rem; }
+            .hero-stats { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+            .hero-stat-value { font-size: 1.75rem; }
+            .section { padding: 5rem 0; }
+            .services-grid { grid-template-columns: 1fr; }
+            .portfolio-grid { grid-template-columns: 1fr; }
+            .pricing-grid { grid-template-columns: 1fr; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-stats { grid-template-columns: 1fr; gap: 1.25rem; }
+            .hero-actions { flex-direction: column; }
+            .hero-actions .btn { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="#" class="logo">
+                    <img src="logo.png" alt="HardHat Digital">
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#process">Process</a></li>
+                    <li><a href="#contact" class="btn btn-primary">Start a Project</a></li>
+                </ul>
+                <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Nav -->
+    <div class="mobile-nav" id="mobileNav">
+        <button class="mobile-close" id="mobileClose" aria-label="Close menu">✕</button>
+        <a href="#services" onclick="closeMobile()">Services</a>
+        <a href="#pricing" onclick="closeMobile()">Pricing</a>
+        <a href="#process" onclick="closeMobile()">Process</a>
+        <a href="#contact" onclick="closeMobile()">Contact</a>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div>
+                    <div class="hero-logo reveal"><img src="logo.png" alt="HardHat Digital"></div>
+                    <div class="hero-tag reveal reveal-delay-1">⚡ Websites that work as hard as you do</div>
+                    <h1 class="reveal reveal-delay-2">
+                        Digital presence<br>for the <span class="accent">skilled trades.</span>
+                    </h1>
+                    <p class="hero-sub reveal reveal-delay-3">
+                        We build fast, professional websites for contractors, plumbers, electricians, and HVAC techs. No fluff. No templates. Just sites that bring in work.
+                    </p>
+                    <div class="hero-actions reveal reveal-delay-4">
+                        <a href="#contact" class="btn btn-primary btn-lg">Start Your Project →</a>
+                        <a href="#pricing" class="btn btn-outline btn-lg">View Pricing</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-stats">
+                <div class="reveal">
+                    <div class="hero-stat-value">127<span>+</span></div>
+                    <div class="hero-stat-label">Trade businesses launched</div>
+                </div>
+                <div class="reveal reveal-delay-1">
+                    <div class="hero-stat-value">3.2<span>×</span></div>
+                    <div class="hero-stat-label">Average lead increase</div>
+                </div>
+                <div class="reveal reveal-delay-2">
+                    <div class="hero-stat-value">48<span>hr</span></div>
+                    <div class="hero-stat-label">Average turnaround time</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="section section-alt">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-label">What We Do</div>
+                <h2 class="section-title">Everything your trade<br>business needs online.</h2>
+                <p class="section-desc">We handle the digital side so you can focus on the work that matters.</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card reveal">
+                    <div class="service-icon">🌐</div>
+                    <h3>Website Design & Build</h3>
+                    <p>Custom-designed, mobile-first websites built to convert visitors into booked jobs. Not a template — your site, built from scratch.</p>
+                </div>
+                <div class="service-card reveal reveal-delay-1">
+                    <div class="service-icon">📍</div>
+                    <h3>Local SEO</h3>
+                    <p>Dominate "near me" searches in your service area. Google Business Profile optimization, local citations, and on-page SEO that actually moves the needle.</p>
+                </div>
+                <div class="service-card reveal reveal-delay-2">
+                    <div class="service-icon">⭐</div>
+                    <h3>Reputation Management</h3>
+                    <p>Automated review collection, response templates, and monitoring across Google, Yelp, and social. Turn happy customers into 5-star proof.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">📅</div>
+                    <h3>Online Booking</h3>
+                    <p>Let customers book estimates and appointments 24/7. Syncs with your calendar, sends reminders, and cuts down on back-and-forth phone calls.</p>
+                </div>
+                <div class="service-card reveal reveal-delay-1">
+                    <div class="service-icon">🎨</div>
+                    <h3>Brand Identity</h3>
+                    <p>Professional logo, color system, and brand guidelines that make your business look established — even if you started last month.</p>
+                </div>
+                <div class="service-card reveal reveal-delay-2">
+                    <div class="service-icon">🚀</div>
+                    <h3>Managed Hosting</h3>
+                    <p>Lightning-fast hosting with SSL, daily backups, uptime monitoring, and same-day content updates. We keep the lights on.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="section section-alt">
+        <div class="container">
+            <div class="section-header center reveal">
+                <div class="section-label">Pricing</div>
+                <h2 class="section-title">Honest pricing. No surprises.</h2>
+                <p class="section-desc">One-time setup to build your site, then a simple monthly fee to keep everything running and optimized.</p>
+            </div>
+
+            <div class="pricing-grid">
+                <div class="pricing-card reveal">
+                    <div class="pricing-name">Starter</div>
+                    <div class="pricing-amount">$499 <span>setup</span></div>
+                    <div class="pricing-setup">then $79/month</div>
+                    <p class="pricing-desc">Perfect for new businesses that need a professional online presence fast.</p>
+                    <ul class="pricing-features">
+                        <li>Custom 5-page website</li>
+                        <li>Mobile-responsive design</li>
+                        <li>Basic on-page SEO</li>
+                        <li>Contact form + click-to-call</li>
+                        <li>Managed hosting & SSL</li>
+                        <li>Monthly content updates (2)</li>
+                        <li>Custom logo design (+$199)</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline">Get Started</a>
+                </div>
+
+                <div class="pricing-card featured reveal reveal-delay-1">
+                    <div class="pricing-badge">Most Popular</div>
+                    <div class="pricing-name">Professional</div>
+                    <div class="pricing-amount">$999 <span>setup</span></div>
+                    <div class="pricing-setup">then $149/month</div>
+                    <p class="pricing-desc">For established businesses ready to dominate local search and convert more leads.</p>
+                    <ul class="pricing-features">
+                        <li>Everything in Starter</li>
+                        <li>Online booking system</li>
+                        <li>Google Business Profile setup</li>
+                        <li>Local SEO optimization</li>
+                        <li>Review collection automation</li>
+                        <li>Monthly analytics report</li>
+                        <li>Priority support</li>
+                        <li>Custom logo design (+$199)</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary">Start Your Project</a>
+                </div>
+
+                <div class="pricing-card reveal reveal-delay-2">
+                    <div class="pricing-name">Premium</div>
+                    <div class="pricing-amount">$1,999 <span>setup</span></div>
+                    <div class="pricing-setup">then $249/month</div>
+                    <p class="pricing-desc">The full package. Brand identity, website, SEO, and ongoing growth strategy.</p>
+                    <ul class="pricing-features">
+                        <li>Everything in Professional</li>
+                        <li>Custom logo & brand guide (included free)</li>
+                        <li>Advanced SEO + content strategy</li>
+                        <li>Social media integration</li>
+                        <li>Email marketing setup</li>
+                        <li>Quarterly strategy calls</li>
+                        <li>24/7 priority support</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline">Go Premium</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process -->
+    <section id="process" class="section">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-label">How It Works</div>
+                <h2 class="section-title">Four steps. Zero headaches.</h2>
+                <p class="section-desc">We built a process that respects your time. No endless meetings, no jargon.</p>
+            </div>
+
+            <div class="process-grid">
+                <div class="process-step reveal">
+                    <div class="process-num">01</div>
+                    <h3>Discovery</h3>
+                    <p>A 20-minute call to understand your business, your market, and what's working (or not). No sales pitch.</p>
+                </div>
+                <div class="process-step reveal reveal-delay-1">
+                    <div class="process-num">02</div>
+                    <h3>Design</h3>
+                    <p>We build your site within 48 hours. You'll see a working preview — not a flat mockup you have to imagine.</p>
+                </div>
+                <div class="process-step reveal reveal-delay-2">
+                    <div class="process-num">03</div>
+                    <h3>Refine</h3>
+                    <p>Two rounds of revisions until it's exactly right. Your feedback drives every change. No extra charge.</p>
+                </div>
+                <div class="process-step reveal reveal-delay-3">
+                    <div class="process-num">04</div>
+                    <h3>Launch</h3>
+                    <p>We handle DNS, hosting, analytics, and go-live. You get a site that's ready to work from day one.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header center reveal">
+                <div class="section-label">Testimonials</div>
+                <h2 class="section-title">Don't take our word for it.</h2>
+                <p class="section-desc">Here's what trade business owners have to say after working with us.</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"I was paying $200/month to some agency and my site looked like it was from 2012. HardHat rebuilt the whole thing in two days. Phone started ringing the same week. These guys actually understand contractors."</p>
+                </div>
+
+                <div class="testimonial-card reveal reveal-delay-1">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"The booking system alone paid for itself in the first month. I used to spend an hour a day answering calls just to schedule estimates. Now it's automatic. Wish I'd done this years ago."</p>
+                </div>
+
+                <div class="testimonial-card reveal reveal-delay-2">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"We went from zero Google reviews to 53 in three months. The automated review system they set up is genius — customers actually follow through. Our close rate jumped 40% because people trust us before we even show up."</p>
+                </div>
+
+                <div class="testimonial-card reveal reveal-delay-3">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"I told them I needed something that looked professional but not corporate. They nailed it on the first try. My competitors are still using GoDaddy templates and it shows. Best investment I've made in my business."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="cta-banner">
+        <div class="container">
+            <h2 class="reveal">Ready to look like the<br><span style="color: var(--amber)">professional you are?</span></h2>
+            <p class="reveal reveal-delay-1">Your competition is online. Your customers are searching. Let's make sure they find you first.</p>
+            <div class="reveal reveal-delay-2">
+                <a href="#contact" class="btn btn-primary btn-lg">Book Your Free Consultation →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section section-alt">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-label">Get In Touch</div>
+                <h2 class="section-title">Let's talk about your project.</h2>
+                <p class="section-desc">Free 20-minute consultation. No obligation, no hard sell.</p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-info reveal">
+                    <h3>Contact Info</h3>
+
+                    <div class="contact-detail">
+                        <div class="contact-detail-icon">📞</div>
+                        <div>
+                            <div class="contact-detail-label">Phone</div>
+                            <div class="contact-detail-value">(555) 123-4567</div>
+                        </div>
+                    </div>
+
+                    <div class="contact-detail">
+                        <div class="contact-detail-icon">✉️</div>
+                        <div>
+                            <div class="contact-detail-label">Email</div>
+                            <div class="contact-detail-value">hello@hardhat.digital</div>
+                        </div>
+                    </div>
+
+                    <div class="contact-detail">
+                        <div class="contact-detail-icon">📍</div>
+                        <div>
+                            <div class="contact-detail-label">Based In</div>
+                            <div class="contact-detail-value">New Jersey</div>
+                        </div>
+                    </div>
+
+                    <div class="contact-detail">
+                        <div class="contact-detail-icon">🕐</div>
+                        <div>
+                            <div class="contact-detail-label">Response Time</div>
+                            <div class="contact-detail-value">Within 2 hours during business hours</div>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contact-form reveal reveal-delay-1" onsubmit="event.preventDefault(); this.innerHTML='<div style=\'text-align:center;padding:4rem 2rem\'><h3 style=\'color:var(--white);margin-bottom:0.5rem\'>Message sent.</h3><p style=\'color:var(--slate-400)\'>We\'ll get back to you within 2 hours.</p></div>'">
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" placeholder="Your name" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000">
+                        </div>
+                    </div>
+                    <div class="form-field">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="you@company.com" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="trade">Type of Trade</label>
+                        <select id="trade" name="trade">
+                            <option value="" disabled selected>Select your trade</option>
+                            <option>Plumbing</option>
+                            <option>Electrical</option>
+                            <option>HVAC</option>
+                            <option>Roofing</option>
+                            <option>General Contracting</option>
+                            <option>Painting</option>
+                            <option>Landscaping</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="form-field">
+                        <label for="message">Tell us about your project</label>
+                        <textarea id="message" name="message" placeholder="What do you need? What's your timeline? Any details help."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg">Send Message →</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <img src="logo.png" alt="HardHat Digital">
+                    </a>
+                    <p>Premium websites for the skilled trades. Built by people who understand your business.</p>
+                </div>
+                <div>
+                    <h4>Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="#services">Website Design</a></li>
+                        <li><a href="#services">Local SEO</a></li>
+                        <li><a href="#services">Brand Identity</a></li>
+                        <li><a href="#services">Online Booking</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#process">Process</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Connect</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 HardHat Digital. All rights reserved.</span>
+                <span>Built for the trades.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Header scroll
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 60);
+        }, { passive: true });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                e.preventDefault();
+                const t = document.querySelector(a.getAttribute('href'));
+                if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // Mobile menu
+        const mobileNav = document.getElementById('mobileNav');
+        document.getElementById('menuToggle').addEventListener('click', () => mobileNav.classList.add('open'));
+        document.getElementById('mobileClose').addEventListener('click', () => mobileNav.classList.remove('open'));
+        function closeMobile() { mobileNav.classList.remove('open'); }
+    </script>
+</body>
+</html>
