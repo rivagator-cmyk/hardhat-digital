@@ -497,6 +497,17 @@
         .testimonial p { color: #d6d3d1; font-size: 0.95rem; line-height: 1.7; font-style: italic; }
         .testimonial-author { margin-top: 1.25rem; font-size: 0.85rem; font-weight: 600; color: var(--amber); font-style: normal; }
 
+        /* ── About tags ── */
+        .about-tags { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 0.5rem; }
+        .about-tag { background: rgba(217,119,6,0.15); color: var(--amber-light); padding: 0.4rem 0.8rem; border-radius: 6px; font-size: 0.85rem; font-weight: 500; }
+        .about-visual { text-align: center; color: white; }
+        .about-visual-icon { font-family: var(--font-display); font-size: 3rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .about-visual-title { font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; margin-bottom: 0.25rem; }
+        .about-visual-sub { color: #a8a29e; font-size: 0.9rem; }
+
+        /* ── Contact SVG icons ── */
+        .contact-icon svg { width: 22px; height: 22px; stroke: var(--amber); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
         /* ── CTA ── */
         .cta {
             padding: 6rem 0;
@@ -638,7 +649,7 @@
     </nav>
 
     <div class="mobile-nav" id="mobileNav">
-        <button class="mobile-close" id="mobileClose">✕</button>
+        <button class="mobile-close" id="mobileClose" aria-label="Close menu">✕</button>
         <a href="#services" onclick="closeMobile()">Services</a>
         <a href="#pricing" onclick="closeMobile()">Pricing</a>
         <a href="#process" onclick="closeMobile()">How It Works</a>
@@ -752,18 +763,18 @@
                     <h2>Built by people who get it.</h2>
                     <p>We've seen too many tradespeople get ripped off by agencies charging $5,000+ for cookie-cutter templates. That's not us.</p>
                     <p>Hardhat Digital was built specifically for the trades. We speak your language, understand your business, and know what actually works to get your phone ringing.</p>
-                    <div style="display:flex;flex-wrap:wrap;gap:1rem;margin-top:0.5rem">
-                        <span style="background:rgba(217,119,6,0.15);color:var(--amber-light);padding:0.4rem 0.8rem;border-radius:6px;font-size:0.85rem;font-weight:500">No jargon</span>
-                        <span style="background:rgba(217,119,6,0.15);color:var(--amber-light);padding:0.4rem 0.8rem;border-radius:6px;font-size:0.85rem;font-weight:500">Fair pricing</span>
-                        <span style="background:rgba(217,119,6,0.15);color:var(--amber-light);padding:0.4rem 0.8rem;border-radius:6px;font-size:0.85rem;font-weight:500">Fast turnaround</span>
-                        <span style="background:rgba(217,119,6,0.15);color:var(--amber-light);padding:0.4rem 0.8rem;border-radius:6px;font-size:0.85rem;font-weight:500">We answer our phone</span>
+                    <div class="about-tags">
+                        <span class="about-tag">No jargon</span>
+                        <span class="about-tag">Fair pricing</span>
+                        <span class="about-tag">Fast turnaround</span>
+                        <span class="about-tag">We answer our phone</span>
                     </div>
                 </div>
                 <div class="split-visual reveal reveal-delay-1">
-                    <div style="text-align:center;color:white">
-                        <div style="font-family:var(--font-display);font-size:3rem;font-weight:700;margin-bottom:0.5rem">🔨</div>
-                        <div style="font-family:var(--font-display);font-size:1.5rem;font-weight:600;margin-bottom:0.25rem">Hardhat Digital</div>
-                        <div style="color:#a8a29e;font-size:0.9rem">Websites for the trades.</div>
+                    <div class="about-visual">
+                        <div class="about-visual-icon">🔨</div>
+                        <div class="about-visual-title">Hardhat Digital</div>
+                        <div class="about-visual-sub">Websites for the trades.</div>
                     </div>
                 </div>
             </div>
@@ -867,22 +878,22 @@
             <h2 class="reveal">What people are saying.</h2>
             <div class="testimonials-grid">
                 <div class="testimonial reveal">
-                    <div class="testimonial-stars">★★★★★</div>
+                    <div class="testimonial-stars" aria-label="5 out of 5 stars">★★★★★</div>
                     <p>"I was paying $200/month to some agency and my site looked like it was from 2012. Hardhat rebuilt the whole thing in two days. Phone started ringing the same week."</p>
                     <div class="testimonial-author">— Mike R., Plumber, Newark</div>
                 </div>
                 <div class="testimonial reveal reveal-delay-1">
-                    <div class="testimonial-stars">★★★★★</div>
+                    <div class="testimonial-stars" aria-label="5 out of 5 stars">★★★★★</div>
                     <p>"The booking system alone paid for itself in the first month. I used to spend an hour a day answering calls just to schedule estimates. Now it's automatic."</p>
                     <div class="testimonial-author">— Carlos D., HVAC Contractor, Paterson</div>
                 </div>
                 <div class="testimonial reveal reveal-delay-2">
-                    <div class="testimonial-stars">★★★★★</div>
+                    <div class="testimonial-stars" aria-label="5 out of 5 stars">★★★★★</div>
                     <p>"We went from zero Google reviews to 53 in three months. Our close rate jumped 40% because people trust us before we even show up."</p>
                     <div class="testimonial-author">— James T., Electrician, Jersey City</div>
                 </div>
                 <div class="testimonial reveal reveal-delay-3">
-                    <div class="testimonial-stars">★★★★★</div>
+                    <div class="testimonial-stars" aria-label="5 out of 5 stars">★★★★★</div>
                     <p>"I told them I needed something professional but not corporate. They nailed it first try. Best investment I've made in my business."</p>
                     <div class="testimonial-author">— Tony M., General Contractor, Elizabeth</div>
                 </div>
@@ -910,21 +921,21 @@
                     <p>Free 20-minute consultation. No obligation, no hard sell.</p>
 
                     <div class="contact-item">
-                        <div class="contact-icon">📞</div>
+                        <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
                         <div>
                             <div class="contact-label">Phone</div>
                             <div class="contact-value"><a href="tel:9177677262">(917) 767-7262</a></div>
                         </div>
                     </div>
                     <div class="contact-item">
-                        <div class="contact-icon">✉️</div>
+                        <div class="contact-icon"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
                         <div>
                             <div class="contact-label">Email</div>
                             <div class="contact-value"><a href="mailto:Hardhatdigital@zohomail.com">Hardhatdigital@zohomail.com</a></div>
                         </div>
                     </div>
                     <div class="contact-item">
-                        <div class="contact-icon">🕐</div>
+                        <div class="contact-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
                         <div>
                             <div class="contact-label">Response Time</div>
                             <div class="contact-value">Within 2 hours during business hours</div>
