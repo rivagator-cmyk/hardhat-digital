@@ -934,13 +934,6 @@
                             <div class="contact-value"><a href="mailto:Hardhatdigital@zohomail.com">Hardhatdigital@zohomail.com</a></div>
                         </div>
                     </div>
-                    <div class="contact-item">
-                        <div class="contact-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-                        <div>
-                            <div class="contact-label">Response Time</div>
-                            <div class="contact-value">Within 2 hours during business hours</div>
-                        </div>
-                    </div>
                 </div>
 
                 <form class="contact-form reveal reveal-delay-1" id="contactForm">
@@ -1071,7 +1064,7 @@
             .then(r => r.json())
             .then(res => {
                 if (res.success) {
-                    form.innerHTML = '<div class="form-msg success"><h3>Message sent!</h3><p style="color:var(--text-muted)">We\'ll get back to you within 2 hours.</p></div>';
+                    form.innerHTML = '<div class="form-msg success"><h3>Message sent!</h3><p style="color:var(--text-muted)">We\'ll be in touch soon.</p></div>';
                 } else {
                     throw new Error('FormSubmit error');
                 }
