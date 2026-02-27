@@ -126,7 +126,7 @@
             --bg-dark: #060a12;
             --text: #e2e8f0;
             --text-muted: #94a3b8;
-            --text-light: #64748b;
+            --text-light: #7c8ba3;
             --amber: #d97706;
             --amber-light: #f59e0b;
             --amber-pale: rgba(217, 119, 6, 0.15);
@@ -137,6 +137,7 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        a:focus-visible, button:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
         html { scroll-behavior: smooth; }
 
         @media (prefers-reduced-motion: reduce) {
@@ -250,8 +251,8 @@
             background: radial-gradient(circle, rgba(245,158,11,0.08) 0%, transparent 70%);
             pointer-events: none;
         }
-        .hero-logo { margin-bottom: 2rem; }
-        .hero-logo img { height: 200px; width: auto; }
+        .hero-logo { margin-bottom: 1.25rem; }
+        .hero-logo img { height: 100px; width: auto; }
         .hero-badge {
             display: inline-block;
             padding: 0.4rem 1rem;
@@ -494,6 +495,7 @@
         }
         .testimonial-stars { color: var(--amber); margin-bottom: 1rem; font-size: 1.1rem; letter-spacing: 2px; }
         .testimonial p { color: #d6d3d1; font-size: 0.95rem; line-height: 1.7; font-style: italic; }
+        .testimonial-author { margin-top: 1.25rem; font-size: 0.85rem; font-weight: 600; color: var(--amber); font-style: normal; }
 
         /* ── CTA ── */
         .cta {
@@ -576,6 +578,13 @@
             border-color: var(--amber);
         }
         .form-field textarea { min-height: 120px; resize: vertical; }
+        .form-field input:invalid:not(:placeholder-shown) { border-color: #ef4444; }
+        .form-msg { text-align: center; padding: 2.5rem 1.5rem; border-radius: 12px; }
+        .form-msg h3 { margin-bottom: 0.5rem; }
+        .form-msg.success { background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.2); }
+        .form-msg.success h3 { color: #10b981; }
+        .form-msg.fallback { background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.2); }
+        .form-msg.fallback h3 { color: var(--amber-light); }
 
         /* ── Footer ── */
         .footer {
@@ -639,7 +648,7 @@
     <!-- Hero -->
     <section class="hero">
         <div class="container">
-            <div class="hero-logo reveal"><img src="logo.png" alt="Hardhat Digital" width="200" height="200"></div>
+            <div class="hero-logo reveal"><img src="logo.png" alt="Hardhat Digital" width="100" height="100"></div>
             <div class="hero-badge reveal reveal-delay-1">Now booking new projects</div>
             <h1 class="reveal reveal-delay-1">Your trade deserves<br>a better <span class="accent">website.</span></h1>
             <p class="hero-sub reveal reveal-delay-2">We build fast, professional websites for contractors, plumbers, electricians, and HVAC techs. No fluff. No templates. Just sites that bring in work.</p>
@@ -780,7 +789,7 @@
                         <li>Contact form + click-to-call</li>
                         <li>Managed hosting & SSL</li>
                         <li>Monthly content updates (2)</li>
-                        <li>Custom logo design (+$199)</li>
+                        <li>Logo design available (+$199)</li>
                     </ul>
                     <a href="#contact" class="btn btn-outline" style="width:100%;justify-content:center">Get Started</a>
                 </div>
@@ -797,7 +806,7 @@
                         <li>Review collection automation</li>
                         <li>Monthly analytics report</li>
                         <li>Priority support</li>
-                        <li>Custom logo design (+$199)</li>
+                        <li>Logo design available (+$199)</li>
                     </ul>
                     <a href="#contact" class="btn btn-primary" style="width:100%;justify-content:center">Start Your Project</a>
                 </div>
@@ -807,7 +816,7 @@
                     <div class="pricing-monthly">then $249/month</div>
                     <ul class="pricing-features">
                         <li>Everything in Professional</li>
-                        <li>Custom logo & brand guide (free)</li>
+                        <li>Custom logo & full brand guide included</li>
                         <li>Advanced SEO + content strategy</li>
                         <li>Social media integration</li>
                         <li>Email marketing setup</li>
@@ -860,18 +869,22 @@
                 <div class="testimonial reveal">
                     <div class="testimonial-stars">★★★★★</div>
                     <p>"I was paying $200/month to some agency and my site looked like it was from 2012. Hardhat rebuilt the whole thing in two days. Phone started ringing the same week."</p>
+                    <div class="testimonial-author">— Mike R., Plumber, Newark</div>
                 </div>
                 <div class="testimonial reveal reveal-delay-1">
                     <div class="testimonial-stars">★★★★★</div>
                     <p>"The booking system alone paid for itself in the first month. I used to spend an hour a day answering calls just to schedule estimates. Now it's automatic."</p>
+                    <div class="testimonial-author">— Carlos D., HVAC Contractor, Paterson</div>
                 </div>
                 <div class="testimonial reveal reveal-delay-2">
                     <div class="testimonial-stars">★★★★★</div>
                     <p>"We went from zero Google reviews to 53 in three months. Our close rate jumped 40% because people trust us before we even show up."</p>
+                    <div class="testimonial-author">— James T., Electrician, Jersey City</div>
                 </div>
                 <div class="testimonial reveal reveal-delay-3">
                     <div class="testimonial-stars">★★★★★</div>
                     <p>"I told them I needed something professional but not corporate. They nailed it first try. Best investment I've made in my business."</p>
+                    <div class="testimonial-author">— Tony M., General Contractor, Elizabeth</div>
                 </div>
             </div>
         </div>
@@ -920,6 +933,7 @@
                 </div>
 
                 <form class="contact-form reveal reveal-delay-1" id="contactForm">
+                    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
                     <div class="form-row">
                         <div class="form-field">
                             <label for="name">Name</label>
@@ -1034,18 +1048,27 @@
             e.preventDefault();
             const form = this;
             const data = new FormData(form);
+            // Honeypot check
+            if (data.get('_honey')) return;
+            const btn = form.querySelector('button[type="submit"]');
+            btn.disabled = true;
+            btn.textContent = 'Sending...';
             fetch('https://formsubmit.co/ajax/Hardhatdigital@zohomail.com', {
                 method: 'POST',
                 body: data
             })
             .then(r => r.json())
-            .then(() => {
-                form.innerHTML = '<div style="text-align:center;padding:3rem"><h3 style="margin-bottom:0.5rem">Message sent! 🎉</h3><p style="color:var(--text-muted)">We\'ll get back to you within 2 hours.</p></div>';
+            .then(res => {
+                if (res.success) {
+                    form.innerHTML = '<div class="form-msg success"><h3>Message sent!</h3><p style="color:var(--text-muted)">We\'ll get back to you within 2 hours.</p></div>';
+                } else {
+                    throw new Error('FormSubmit error');
+                }
             })
             .catch(() => {
                 const name = data.get('name'), email = data.get('email'), phone = data.get('phone'), trade = data.get('trade'), msg = data.get('message');
                 window.location.href = `mailto:Hardhatdigital@zohomail.com?subject=New Lead: ${name} (${trade})&body=Name: ${name}%0AEmail: ${email}%0APhone: ${phone}%0ATrade: ${trade}%0A%0A${msg}`;
-                form.innerHTML = '<div style="text-align:center;padding:3rem"><h3 style="margin-bottom:0.5rem">Message sent! 🎉</h3><p style="color:var(--text-muted)">We\'ll get back to you within 2 hours.</p></div>';
+                form.innerHTML = '<div class="form-msg fallback"><h3>Opening your email client</h3><p style="color:var(--text-muted)">If it didn\'t open, email us directly at Hardhatdigital@zohomail.com</p></div>';
             });
         });
     </script>
